@@ -23,13 +23,13 @@ OXLINT_ARGS="$config"
 # Build plugin args
 # map whitespace-separated `name` to `--name-plugin`
 if [ -n "$OXLINT_PLUGINS" ]; then
-    plugins="$(echo "$OXLINT_PLUGINS" | sed -e 's/ / --/g' -e 's/^/--/')-plugin"
+    plugins="$(echo "$OXLINT_PLUGINS" | xargs | sed -e 's/ / --/g' -e 's/^/--/')-plugin"
 fi
 
 # build disable plugin args
 # map whitespace-separated `name` to `--disable-name-plugin`
 if [ -n "$OXLINT_PLUGINS_DISABLE" ]; then
-    disable_plugins="$(echo "$OXLINT_PLUGINS_DISABLE" | sed -e 's/ / --disable-/g' -e 's/^/--disable/')-plugin"
+    disable_plugins="$(echo "$OXLINT_PLUGINS_DISABLE" | xargs | sed -e 's/ / --disable-/g' -e 's/^/--disable/')-plugin"
 fi
 
 OXLINT_ARGS="$OXLINT_ARGS $plugins $disable_plugins"
@@ -37,17 +37,17 @@ OXLINT_ARGS="$OXLINT_ARGS $plugins $disable_plugins"
 # build allow, warn, and deny lists
 # map `rule-name` to `-[A/W/D] rule-name`
 if [ -n "$OXLINT_ALLOW" ]; then
-    allow_list="$(echo "$OXLINT_ALLOW" | sed -e 's/ / -A /g' -e 's/^/-A /')"
+    allow_list="$(echo "$OXLINT_ALLOW" | xargs | sed -e 's/ / -A /g' -e 's/^/-A /')"
 fi
 
 if [ -n "$OXLINT_WARN" ]; then
-    warn_list="$(echo "$OXLINT_WARN" | sed -e 's/ / -W /g' -e 's/^/-W /')"
+    warn_list="$(echo "$OXLINT_WARN" | xargs | sed -e 's/ / -W /g' -e 's/^/-W /')"
 else
     warn_list="-W correctness"
 fi
 
 if [ -n "$OXLINT_DENY" ]; then
-    deny_list="$(echo "$OXLINT_DENY" | sed -e 's/ / -D /g' -e 's/^/-D /')"
+    deny_list="$(echo "$OXLINT_DENY" | xargs | sed -e 's/ / -D /g' -e 's/^/-D /')"
 fi
 
 # order is important. We want consumers to be able to deny a category, and then
