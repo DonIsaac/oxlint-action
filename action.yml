@@ -1,5 +1,9 @@
 name: "Oxlint"
 description: "Lint your code with Oxlint"
+author: Don Isaac
+branding:
+  icon: anchor
+  color: blue
 
 inputs:
   version: 
