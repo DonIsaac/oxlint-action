@@ -81,7 +81,7 @@ runs:
       if: github.event_name == 'pull_request'
       run: |
         git fetch origin $BASE_BRANCH:$BASE_BRANCH --depth=1
-        git branch --track $BASE_BRANCH origin/$BASE_BRANCH
+        # git branch --track $BASE_BRANCH origin/$BASE_BRANCH
       env:
         BASE_BRANCH: ${{ steps.base-branch.outputs.base-branch }}
 
