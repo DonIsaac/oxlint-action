@@ -76,6 +76,13 @@ runs:
           echo "base-branch=${{ inputs.base-branch }}" >> "$GITHUB_OUTPUT"
         fi
 
+    - name: Fetch Base Branch
+      shell: base
+      if: github.event_name == 'pull_request'
+      run: |
+        git fetch origin ${{ steps.base-branch.outputs.base-branch }}:${{ steps.base-branch.outputs.base-branch }} --depth=1
+        git branch --track ${{ github.event.pull_request.base.ref }} origin/${{ github.event.pull_request.base.ref }}
+
     - name: Check For NPX
       shell: bash
       run: |
