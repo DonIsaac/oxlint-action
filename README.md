@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: donisaac@oxlint-action@latest
+      - uses: DonIsaac/oxlint-action@latest
         with:
           # Allow, Warn, or Deny specific lint rules or entire categories
           # https://oxc.rs/docs/guide/usage/linter/cli.html#enable-plugins
@@ -54,7 +54,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - uses: donisaac@oxlint-action@latest
+    - uses: DonIsaac/oxlint-action@latest
       with:
         # Specify an Oxlint config file if you already have one. Oxlint is also
         # compatible with JSON ESLint configs (v8 and lower).
