@@ -102,7 +102,7 @@ runs:
         files=$(git diff --name-only ${{ steps.base-branch.outputs.base-branch }} ${{ github.sha }})
         echo "::debug::Files:"
         echo "::debug::${files}"
-        oxlint.sh $files
+        $GITHUB_ACTION_PATH/oxlint.sh $files
         echo "::endgroup::"
       env:
         OXLINT_VERSION: ${{ inputs.version }}
@@ -120,5 +120,5 @@ runs:
       if: github.event_name != 'pull_request' || ${{ inputs.all-files }} == 'true'
       run: |
         echo "::group::Run Oxlint (All Files)"
-        oxlint.sh
+        $GITHUB_ACTION_PATH/oxlint.sh
         echo "::endgroup::"
