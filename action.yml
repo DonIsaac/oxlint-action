@@ -71,7 +71,7 @@ runs:
       run: |
         if [ -z "${{ inputs.base-branch }}" ]; then
           echo "Base branch not set. Defaulting to target branch of PR."
-          echo "base-branch=${{ github.base_ref }}" >> "$GITHUB_OUTPUT"
+          eccho "base-branch=${{ github.event.pull_request.base.ref }}" >> "$GITHUB_OUTPUT"
         else
           echo "base-branch=${{ inputs.base-branch }}" >> "$GITHUB_OUTPUT"
         fi
