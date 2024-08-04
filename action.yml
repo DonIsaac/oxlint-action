@@ -6,7 +6,7 @@ branding:
   color: blue
 
 inputs:
-  version: 
+  version:
     description: "Oxlint SemVer version pattern to use"
     required: false
     default: "latest"
@@ -15,7 +15,7 @@ inputs:
     description: "Categories and lints to allow, separated by whitespace"
     required: false
     default: ""
-  
+
   deny:
     description: "Categories and lints to deny, separated by whitespace"
     required: false
@@ -58,12 +58,11 @@ inputs:
   base-branch:
     description: "Base branch to diff PR branches against."
     required: false
-    default: "" # Default to PR target branch
+    default: ""  # Default to PR target branch
 
 runs:
   using: "composite"
   steps:
-
     - name: Set Base Branch
       id: base-branch
       shell: bash
