@@ -1,4 +1,5 @@
 # oxlint-action
+> This repo has been moved to [the Oxc project organization](https://github.com/oxc-project/oxlint-action).
 
 Run [Oxlint](https://github.com/oxc-project/oxc) on your project.
 
