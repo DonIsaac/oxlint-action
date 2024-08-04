@@ -2,3 +2,5 @@ extends: default
 rules:
   line-length: disable
   document-start: disable
+  # Hitting false positives with 'on' key.
+  truthy: disable
