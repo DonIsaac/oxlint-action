@@ -71,4 +71,5 @@ echo "::debug::Args: $OXLINT_ARGS"
 
 # Files to lint are passed as arguments. For non-prs, no arguments are passed,
 # which defaults to all VCS files.
+# shellcheck disable=SC2068,SC2086
 npx oxlint@$OXLINT_VERSION $OXLINT_ARGS ${@:1}
